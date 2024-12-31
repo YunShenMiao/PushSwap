@@ -1,59 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_list.c                                      :+:      :+:    :+:   */
+/*   rev_rotate_list.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jwardeng <jwardeng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/28 16:21:45 by jwardeng          #+#    #+#             */
-/*   Updated: 2024/12/30 14:36:10 by jwardeng         ###   ########.fr       */
+/*   Created: 2024/12/28 16:20:11 by jwardeng          #+#    #+#             */
+/*   Updated: 2024/12/30 14:36:30 by jwardeng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void rotate_list(t_node **node1)
+void rev_rotate_list(t_node **node1)
 {
     t_node *current;
-    t_node *temphead;
-    t_node *temptail;
+    t_node *tail;
+    t_node *afterhead;
 
-    if (*node1 == NULL || node1 == NULL || (*node1)->next == NULL)
+    if(*node1 == NULL || node1 == NULL || (*node1)->next == 0)
     return;
-    temphead = (*node1)->next;
-    temptail = *node1;
-    current = *node1;
-    /* printf("head: %d tail: %d", temphead->data, temptail->data); */
+    current = (*node1);
+    afterhead = (*node1);
     while (current->next != NULL)
         current = current->next;
-    current->next = temptail;
-    temptail->prev = current;
-    temptail->next = NULL;
-    temphead->prev = NULL;
-
-    *node1=temphead;
+    current->next = afterhead;
+    afterhead->prev = current;
+    tail = current->prev;
+    tail->next = NULL;
+    current->prev = NULL;
+    *node1 = current;
 }
 
-void ra(t_node **node1)
+void rra(t_node **node1)
 {
-    rotate_list(node1);
-    ft_printf("ra\n");
+    rev_rotate_list(node1);
+    ft_printf("rra\n");
 }
 
-void rb(t_node **node1)
+void rrb(t_node **node1)
 {
-    rotate_list(node1);
-    ft_printf("rb\n");
+    rev_rotate_list(node1);
+    ft_printf("rrb\n");
 }
 
-void rr(t_node **node1, t_node **node2)
+void rrr(t_node **node1, t_node **node2)
 {
-    rotate_list(node1);
-    rotate_list(node2);
-    ft_printf("rr\n");
+    rev_rotate_list(node1);
+    rev_rotate_list(node2);
+    ft_printf("rrr\n");
 }
 
-/* void print_list(t_node *head) {
+/*  void print_list(t_node *head) {
     t_node *current = head;
 
     printf("Doubly Linked List: ");
@@ -96,13 +94,13 @@ int main()
     node4->prev = node3;
     node4->next = NULL;
 
-    nodea->data = 10;
+    nodea->data = 100;
     nodea->prev = NULL;
     nodea->next = NULL;
     
     print_list(node1);
     print_list(nodea);
-    rr(&node1, &nodea);
+    rrr(&node1, &nodea);
     print_list(node1);
     print_list(nodea);
     free_nodes(&node1);

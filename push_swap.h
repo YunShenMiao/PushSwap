@@ -6,7 +6,7 @@
 /*   By: jwardeng <jwardeng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 16:23:10 by jwardeng          #+#    #+#             */
-/*   Updated: 2024/12/22 16:30:31 by jwardeng         ###   ########.fr       */
+/*   Updated: 2024/12/30 20:49:09 by jwardeng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,42 @@
 # define PUSH_SWAP_H
 
 # include "libft/libft.h"
+# include <limits.h>
+# include <stdio.h>
+# include <stdlib.h>
 
-
-typedef struct d_list 
+typedef struct node
 {
-    int item;
-    struct d_list *prev, *next;
-}                       d_list;
+	int			data;
+	struct node	*prev;
+	struct node	*next;
+	struct node	*targetnode;
+}				t_node;
 
- int bla();
+// int				cust_atoi(const char *str, int *error);
+// node			*create_node(int data);
+// int 			insert_end(t_node **head, int data);
+// int				check_doubles(t_node **stacka);
+int				handle_input(int argc, char *argv[], t_node **stacka);
+// swap
+void			sa(t_node **node1);
+void			sb(t_node **node1);
+void			ss(t_node **node1, t_node **node2);
+// rotate
+void			ra(t_node **node1);
+void			rb(t_node **node1);
+void			rr(t_node **node1, t_node **node2);
+// reverse rotate
+void			rra(t_node **node1);
+void			rrb(t_node **node1);
+void			rrr(t_node **node1, t_node **node2);
+// push
+void			pa(t_node **topush, t_node **dest);
+void			pb(t_node **topush, t_node **dest);
+int				simplify_data(t_node **stacka, int stacklen);
+// void			sorting_thingy(t_node **stacka);
+// void			sort_three(t_node **stacka);
+// int				list_sorted(t_node **stacka);
+// void			free_nodes(t_node **head);
 
 #endif

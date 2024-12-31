@@ -1,18 +1,22 @@
-typedef struct node
-{
-    int data;
-    struct node *next;
-    struct node *prev;
-}   node;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_nodes.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jwardeng <jwardeng@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/28 16:17:41 by jwardeng          #+#    #+#             */
+/*   Updated: 2024/12/30 14:41:02 by jwardeng         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "push_swap.h"
 
-void push_nodes(node **topush, node **dest)
+void push_nodes(t_node **topush, t_node **dest)
 {
-    node *tempa;
-    node *tempb;
-    node *anext;
+    t_node *tempa;
+    t_node *tempb;
+    t_node *anext;
 
     if (topush == NULL || *topush == NULL)
     return;
@@ -27,8 +31,21 @@ void push_nodes(node **topush, node **dest)
     *dest = tempa;
 }
 
-/* void print_list(node *head) {
-    node *current = head;
+void pa(t_node **topush, t_node **dest)
+{
+    push_nodes(topush, dest);
+    ft_printf("pa\n");
+}
+
+void pb(t_node **topush, t_node **dest)
+{
+    push_nodes(topush, dest);
+    ft_printf("pb\n");
+}
+
+/* void print_list(t_node *head) 
+{
+    t_node *current = head;
 
     printf("Doubly Linked List: ");
     while (current != NULL) {
@@ -36,27 +53,34 @@ void push_nodes(node **topush, node **dest)
         current = current->next;
     }
     printf("\n");
-} */
+}
 
-/* int main()
+void free_nodes(t_node **head)
 {
-    node *node1 = malloc(sizeof(node));
-    node *node2 = malloc(sizeof(node));
-    node *node3 = malloc(sizeof(node));
-    node *node4 = malloc(sizeof(node));
-    node *nodea = malloc(sizeof(node));
-    node *nodeb = malloc(sizeof(node));
-    int a = 1;
-    int b = 2;
-    int c = 3;
+    while(*head != NULL)
+    {
+        free(*head);
+        *head = (*head)->next;
+    }
+}
 
-    node1->data = a;
-    node2->data = b;
+int main()
+{
+    t_node *node1 = malloc(sizeof(node));
+    t_node *node2 = malloc(sizeof(node));
+    t_node *node3 = malloc(sizeof(node));
+    t_node *node4 = malloc(sizeof(node));
+    t_node *nodea = malloc(sizeof(node));
+    t_node *nodeb = malloc(sizeof(node));
+
+
+    node1->data = 1;
+    node2->data = 2;
     node1->prev = NULL;
     node1->next = node2;
     node2->prev = node1;
     node2->next = node3;
-    node3->data = c;
+    node3->data = 3;
     node3->prev = node2;
     node3->next = node4;
     node4->data = 4;
@@ -69,20 +93,28 @@ void push_nodes(node **topush, node **dest)
     nodea->next = nodeb;
     nodeb->prev = nodea;
     nodeb->next = NULL;
+    
     printf("stack a: ");
     print_list(node1);
     printf("stack b: ");
     print_list(nodea);
-    push_nodes(&node1, &nodea);
+    pa(&node1, &nodea);
     printf("stack a: ");
     print_list(node1);
     printf("stack b: ");
     print_list(nodea);
-    free(node1);
-    free(node2);
-    free(node3);
-    free(node4);
-    free(nodea);
-    free(nodeb);
+
+    printf("stack a: ");
+    print_list(node1);
+    printf("stack b: ");
+    print_list(nodea);
+    pb(&nodea, &node1);
+    printf("stack a: ");
+    print_list(node1);
+    printf("stack b: ");
+    print_list(nodea);
+    
+    free_nodes(&node1);
+    free_nodes(&nodea);
     return(0);
 } */
