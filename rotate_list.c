@@ -6,7 +6,7 @@
 /*   By: jwardeng <jwardeng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 16:21:45 by jwardeng          #+#    #+#             */
-/*   Updated: 2024/12/30 14:36:10 by jwardeng         ###   ########.fr       */
+/*   Updated: 2025/01/11 11:54:54 by jwardeng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,11 @@ void rotate_list(t_node **node1)
     current = *node1;
     /* printf("head: %d tail: %d", temphead->data, temptail->data); */
     while (current->next != NULL)
+    {
+        current->tail = temptail;
         current = current->next;
+    }
+    current->tail = temptail;
     current->next = temptail;
     temptail->prev = current;
     temptail->next = NULL;

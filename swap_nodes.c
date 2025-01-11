@@ -6,7 +6,7 @@
 /*   By: jwardeng <jwardeng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 16:22:41 by jwardeng          #+#    #+#             */
-/*   Updated: 2024/12/30 18:44:01 by jwardeng         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:08:03 by jwardeng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,28 @@ void	swapsi(t_node **node1)
 	t_node	*temp1;
 	t_node	*temp2;
 	t_node	*temp3;
+/* 	t_node 	*temp4; */
 
 	if (*node1 == NULL || node1 == NULL || (*node1)->next == NULL)
 		return ;
 	temp1 = *node1;
 	temp2 = (*node1)->next;
 	temp3 = temp2->next;
+/* 	if (temp3 != NULL)
+	temp4 = temp2->next;
+	else
+	temp4 = NULL; */
 	temp1->prev = temp2;
 	temp2->next = temp1;
 	temp1->next = temp3;
 	if (temp3 != NULL)
 	temp3->prev = temp1;
+/* 	if (temp4 == NULL)
+	{
+	temp1->tail = temp3;
+	temp2->tail = temp3;
+	temp3->tail = temp3;
+	} */
 	temp2->prev = NULL;
 	*node1 = temp2;
 }

@@ -6,7 +6,7 @@
 /*   By: jwardeng <jwardeng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 16:17:41 by jwardeng          #+#    #+#             */
-/*   Updated: 2024/12/30 14:41:02 by jwardeng         ###   ########.fr       */
+/*   Updated: 2025/01/10 16:47:23 by jwardeng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,17 @@ void push_nodes(t_node **topush, t_node **dest)
 
     if (topush == NULL || *topush == NULL)
     return;
+ 
     tempa = *topush;
     tempb = *dest;
     anext = (*topush)->next;
 
     tempa->next = tempb;
+    if (tempb == NULL)
+    tempa->tail = tempa;
+    else 
+    tempa->tail = tempb->tail;
+    if (anext != NULL)
     anext->prev = NULL;
 
     *topush = anext;

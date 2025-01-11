@@ -6,7 +6,7 @@
 /*   By: jwardeng <jwardeng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 15:24:43 by jwardeng          #+#    #+#             */
-/*   Updated: 2024/12/30 19:44:34 by jwardeng         ###   ########.fr       */
+/*   Updated: 2025/01/10 12:31:38 by jwardeng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,20 @@ t_node	*create_node(int data)
 	newnode->data = data;
 	newnode->prev = NULL;
 	newnode->next = NULL;
+	newnode->tail = newnode;
 	return (newnode);
+}
+
+void update_tail(t_node *head, t_node *new_tail)
+{
+	t_node *temp;
+
+	temp = head;
+	while (temp)
+	{
+		temp->tail = new_tail;
+		temp = temp->next;
+	}
 }
 
 int	insert_end(t_node **head, int data)
@@ -72,6 +85,7 @@ int	insert_end(t_node **head, int data)
 		new_node->prev = temp;
 	}
 	new_node->next = NULL;
+	update_tail(*head, new_node);
 	return(1);
 }
 

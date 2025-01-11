@@ -6,7 +6,7 @@
 /*   By: jwardeng <jwardeng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 16:28:35 by jwardeng          #+#    #+#             */
-/*   Updated: 2024/12/31 19:55:29 by jwardeng         ###   ########.fr       */
+/*   Updated: 2025/01/11 11:11:02 by jwardeng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,19 +54,30 @@ void	print_list(t_node *head)
 	printf("\n");
 }
 
-int	list_sorted(t_node **stacka)
+int	list_sorted(t_node **stack)
 {
 	t_node	*temp;
 
-	temp = (*stacka);
+	temp = (*stack);
 	if (temp->next == NULL)
 		return (1);
-	while ((temp->data < temp->next->data) && (temp->next != NULL))
+	while (temp->next != NULL)
 	{
+		if (temp->data > temp->next->data)
+		break;
 		temp = temp->next;
-		if (temp->next == NULL)
-			return (1);
 	}
+	if (temp->next == NULL)
+		return (1);
+	temp = (*stack);
+		while ((temp->next != NULL))
+	{
+		if (temp->data < temp->next->data)
+		break;
+		temp = temp->next;
+	}
+	if (temp->next == NULL)
+			return (-1);
 	return (0);
 }
 
@@ -104,7 +115,7 @@ void	sort_three(t_node **stacka)
 		a = (*stacka)->data;
 		b = (*stacka)->next->data;
 		c = (*stacka)->next->next->data;
-		if (c > a && a > b || a > b && b > c || b > c && c > a)
+		if ((c > a && a > b) || (a > b && b > c) || (b > c && c > a))
 			sa(stacka);
 		else if (b < c && c < a)
 			ra(stacka);
@@ -115,7 +126,7 @@ void	sort_three(t_node **stacka)
 	}
 }
 
-int stack_len(t_node *stacka)
+/* int stack_len(t_node *stacka)
 {
 	t_node	*temp;
 	int		count;
@@ -129,18 +140,7 @@ int stack_len(t_node *stacka)
 	}
 	count++;
 	return(count);
-}
-
-int find_pivot(int stacklen)
-{
-	int pivot;
-	
-	if (stacklen % 2 == 0)
-	pivot = (stacklen) / 2;
-	else 
-	pivot = (stacklen - 1) / 2;
-	return(pivot);
-}
+} */
 
 /* void create_two(t_node **stacka, t_node **stackb, int stacklen)
 {
@@ -177,7 +177,7 @@ int	main(int argc, char *argv[])
 	{
 	if (simplify_data(&stacka, stack_len(stacka)) == -1)
 	return((ft_printf("Error\n")), (free_nodes(&stacka)), 1);
-	/* sorting_thingy(&stacka, &stackb, stack_len(stacka)); */
+	try_sort(&stacka, &stackb);
 	}
 	print_list(stacka);
 	print_list(stackb);

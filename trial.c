@@ -1,0 +1,150 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   trial.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jwardeng <jwardeng@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/10 09:36:53 by jwardeng          #+#    #+#             */
+/*   Updated: 2025/01/11 13:19:12 by jwardeng         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+// #include "push_swap.h"
+
+
+
+// int stack_len(t_node *stacka)
+// {
+// 	t_node	*temp;
+// 	int		count;
+
+// 	temp = stacka;
+// 	count = 0;
+// 	while (temp->next != NULL)
+// 	{
+// 		temp = temp->next;
+// 		count++;
+// 	}
+// 	count++;
+// 	return(count);
+// }
+
+// int find_pivot(t_node *stack)
+// {
+// 	int stacklen;
+//     int pivot;
+    
+// 	stacklen = stack_len(stack);
+// 	if (stacklen % 2 == 0)
+// 	pivot = (stacklen) / 2;
+// 	else 
+// 	pivot = (stacklen - 1) / 2;
+// 	return(pivot);
+// }
+
+// int calc_dist(t_node **stack)
+// {
+//     t_node *temp;
+//     int count;
+
+//     temp = (*stack);
+//     count = 0;
+//     if (stack_len(*stack) == 3)
+//     return(0);
+//     while ((temp->next != NULL) && ((*stack)->data < temp->next->data))
+//     {
+//         count++;
+//         temp = temp->next; 
+//     }
+//     return(count);
+// }
+
+// void handle_distance(t_node **b, int calc)
+// {
+//     int count;
+
+//     count = 0;
+//             if ((calc = calc_dist(b)) > 1 && calc < (stack_len(*b) - calc))  
+//                while(1)
+//             {
+//                 sb(b);
+//                 rb(b);
+//                 count ++;
+//                 if (count == calc/* ((*b)->data > (*b)->next->data) && ((*b)->data < (*b)->tail->data) */)
+//                 {
+//                 while (--count >= 0)
+//                 rrb(b);
+//                 if (list_sorted(b) == -1)
+//                 break;
+//                 }
+//             }
+//             else if ((calc = calc_dist(b)) > 1 && !((*b)->data < (*b)->tail->data))
+//             {
+//             while(1)
+//             {
+//                 rrb(b);
+//                 sb(b);
+//                 count++;
+//                 if (/* count == stack_len(*b) - calc */ ((*b)->data > (*b)->next->data) && ((*b)->data < (*b)->tail->data))
+//                 {
+//                 while(--count >= -1)
+//                 rb(b);
+//                 }
+//                 if (list_sorted(b) == -1)
+//                 break;
+//             }
+// }
+// }
+
+// void sort_stacks(t_node **a, t_node **b)
+// {
+//     int calc;
+
+//     while (list_sorted(a) == 0)
+//     {
+//         if ((*a)->data < (*a)->next->data && (*a)->data < (*a)->tail->data && (*a)->data > (*a)->tail->prev->data)
+//         {
+//         rra(a);
+//         sa(a);
+//         ra(a);
+//         ra(a);
+//         }
+//         else if ((*a)->data < (*a)->next->data && (*a)->data < (*a)->tail->data)
+//         pb(a, b);
+//         else if ((*a)->data > (*a)->tail->data)
+//         ra(a);
+//         else
+//         sa(a);
+//         if(((*b) != NULL) && ((*b)->next != NULL))
+//         {
+//             if ((calc = calc_dist(b)) > 1 && !((*b)->data < (*b)->tail->data))
+//             handle_distance(b, calc);
+//             else if (((*b)->data < (*b)->next->data) && ((*b)->data > (*b)->tail->data) /* && ((*b)->next->next != NULL) && ((*b)->next->next->data < (*b)->data) */)
+//             sb(b);
+//             else if (((*b)->data < (*b)->tail->data) && ((*b)->next != NULL))
+//             rb(b);
+//         }
+//     }
+// }
+
+// void try_sort(t_node **a, t_node **b)
+// {
+//    sort_stacks(a, b);  
+//     while ((*b) != NULL)
+//     {
+//         pa(b, a);
+//         if ((*a)->data > (*a)->next->data)
+//         sa(a);
+//     }
+
+
+/*              
+SOME DEBUG PRINTS
+                ft_printf("2dist: %d\n", calc);
+                ft_printf("2b: %d\n", (*b)->data);
+                ft_printf("2bnext: %d\n", (*b)->next->data);
+                ft_printf("2tail: %d\n", (*b)->tail->data);
+                ft_printf("2sorted?:%d\n", list_sorted(b));
+                ft_printf("2calc:%d\n", calc);
+                ft_printf("2count:%d\n", count); */
