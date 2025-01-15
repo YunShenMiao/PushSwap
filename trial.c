@@ -6,11 +6,11 @@
 /*   By: jwardeng <jwardeng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 09:36:53 by jwardeng          #+#    #+#             */
-/*   Updated: 2025/01/11 13:19:12 by jwardeng         ###   ########.fr       */
+/*   Updated: 2025/01/15 09:01:18 by jwardeng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "push_swap.h"
+#include "push_swap.h"
 
 
 
@@ -30,17 +30,29 @@
 // 	return(count);
 // }
 
-// int find_pivot(t_node *stack)
+// int find_pivot(t_node **stack)
 // {
-// 	int stacklen;
-//     int pivot;
-    
-// 	stacklen = stack_len(stack);
-// 	if (stacklen % 2 == 0)
-// 	pivot = (stacklen) / 2;
-// 	else 
-// 	pivot = (stacklen - 1) / 2;
-// 	return(pivot);
+//     t_node *temp;
+//     int piv;
+//     int count;
+
+//     temp = (*stack);
+//     piv = 0;
+//     count = 0;
+//     while (temp->next != NULL)
+//     {
+//         piv = piv + temp->data;
+//         temp = temp->next;
+//         count++;
+//     }
+//     piv = piv + temp->data;
+//     count++;
+//     if ((piv % count) == 0)
+//     piv = piv / count;
+//     else
+//     piv = piv / (count - 1);
+//     ft_printf("pipi:%d\n", piv);
+//     return(piv);
 // }
 
 // int calc_dist(t_node **stack)
@@ -100,7 +112,9 @@
 // void sort_stacks(t_node **a, t_node **b)
 // {
 //     int calc;
-
+//     int piv;
+    
+//     piv = find_pivot(a);
 //     while (list_sorted(a) == 0)
 //     {
 //         if ((*a)->data < (*a)->next->data && (*a)->data < (*a)->tail->data && (*a)->data > (*a)->tail->prev->data)
@@ -110,9 +124,9 @@
 //         ra(a);
 //         ra(a);
 //         }
-//         else if ((*a)->data < (*a)->next->data && (*a)->data < (*a)->tail->data)
+//         else if (/* (*a)->data < (*a)->next->data && (*a)->data < (*a)->tail->data &&  */(*a)->data < piv)
 //         pb(a, b);
-//         else if ((*a)->data > (*a)->tail->data)
+//         else if ((*a)->data > (*a)->tail->data || (*a)->next->data > piv)
 //         ra(a);
 //         else
 //         sa(a);
@@ -134,9 +148,10 @@
 //     while ((*b) != NULL)
 //     {
 //         pa(b, a);
-//         if ((*a)->data > (*a)->next->data)
-//         sa(a);
+// /*         if ((*a)->data > (*a)->next->data)
+//         sa(a); */
 //     }
+// }
 
 
 /*              

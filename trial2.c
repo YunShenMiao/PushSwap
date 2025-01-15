@@ -6,7 +6,7 @@
 /*   By: jwardeng <jwardeng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 13:17:31 by jwardeng          #+#    #+#             */
-/*   Updated: 2025/01/11 15:51:47 by jwardeng         ###   ########.fr       */
+/*   Updated: 2025/01/13 14:42:17 by jwardeng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,21 +66,33 @@ int find_pivot(t_node **stack)
     
 } */
 
+void	print_list(t_node *head)
+{
+	t_node	*current;
+
+	current = head;
+	printf("Doubly Linked List: ");
+	while (current != NULL)
+	{
+		printf("%d ", current->data);
+		current = current->next;
+	}
+	printf("\n");
+}
+
 void try_sort(t_node **a, t_node **b)
 {
     int piv;
     int count;
     int total_len;
 
-    if (stack_len(*a) <= 3)
-    return;
     piv = find_pivot(a);
     count = 0;
     total_len = stack_len(*a);
-/*     if (stack_len(*a) <= 6)
-    piv = piv;
+    if (total_len <= 3)
+    return;
     else
-    { */
+    {
         while (count < total_len)
         { 
         if ((*a)->data < piv)
@@ -95,7 +107,9 @@ void try_sort(t_node **a, t_node **b)
         ft_printf("ALEN:%d\n", stack_len(*a));
         ft_printf("count:%d\n", count);
         } 
-        ft_printf("doIreach?\n");
-        /* try_sort(a, b); */
-        try_sort(b, a);
+        print_list(*a);
+        print_list(*b);
+        try_sort(a, b);
+        /* try_sort(b, a); */
+    }
     }
