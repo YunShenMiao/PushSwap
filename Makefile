@@ -6,7 +6,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 SOURCES = 	handle_input.c simplify_data.c push_swap.c \
 			rev_rotate_list.c rotate_list.c swap_nodes.c push_nodes.c \
-			trial3.c
+			quick_sort.c
 
 OBJECTS =	$(SOURCES:.c=.o)
 

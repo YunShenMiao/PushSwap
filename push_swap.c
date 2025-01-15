@@ -6,7 +6,7 @@
 /*   By: jwardeng <jwardeng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 16:28:35 by jwardeng          #+#    #+#             */
-/*   Updated: 2025/01/13 14:54:51 by jwardeng         ###   ########.fr       */
+/*   Updated: 2025/01/15 10:44:10 by jwardeng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,30 +81,6 @@ int	list_sorted(t_node **stack)
 	return (0);
 }
 
-/* void	sort_three(t_node **stacka)
-{
-	node	*temp;
-	node	*temp2;
-
-	while (1)
-	{
-		temp = (*stacka);
-		temp2 = (*stacka)->next;
-		if (temp2->next->data > temp->data && temp->data > temp2->data
-			|| temp->data > temp2->data && temp2->data > temp2->next->data
-			|| temp2->data > temp2->next->data
-			&& temp2->next->data > temp->data)
-			sa(stacka);
-		else if (temp2->data < temp2->next->data
-			&& temp2->next->data < temp->data)
-			ra(stacka);
-		else if (temp2->next->data < temp->data && temp->data < temp2->data)
-			rra(stacka);
-		if (list_sorted(stacka) == 1)
-			break ;
-	}
-} */
-
 void	sort_three(t_node **stacka)
 {
 	int	a;
@@ -126,7 +102,7 @@ void	sort_three(t_node **stacka)
 	}
 }
 
-/* int stack_len(t_node *stacka)
+int stack_len(t_node *stacka)
 {
 	t_node	*temp;
 	int		count;
@@ -140,23 +116,7 @@ void	sort_three(t_node **stacka)
 	}
 	count++;
 	return(count);
-} */
-
-/* void create_two(t_node **stacka, t_node **stackb, int stacklen)
-{
-	int pivot;
-	t_node *tempa;
-
-	pivot = pivot = find_pivot(stacklen);
-	while(stack_len((*stacka)) > pivot)
-	{
-	tempa = (*stacka);
-	if (tempa->data > pivot)
-	ra(stacka);
-	else
-	pb(stacka, stackb);
-	}
-} */
+}
 
 int	main(int argc, char *argv[])
 {
@@ -177,13 +137,30 @@ int	main(int argc, char *argv[])
 	{
 	if (simplify_data(&stacka, stack_len(stacka)) == -1)
 	return((ft_printf("Error\n")), (free_nodes(&stacka)), 1);
-	try_sort(&stacka, &stackb);
+	try_sort(&stacka, &stackb, stack_len(stacka));
 	}
 	print_list(stacka);
 	print_list(stackb);
 	free_nodes(&stacka);
 	return (0);
 }
+
+
+/* void create_two(t_node **stacka, t_node **stackb, int stacklen)
+{
+	int pivot;
+	t_node *tempa;
+
+	pivot = pivot = find_pivot(stacklen);
+	while(stack_len((*stacka)) > pivot)
+	{
+	tempa = (*stacka);
+	if (tempa->data > pivot)
+	ra(stacka);
+	else
+	pb(stacka, stackb);
+	}
+} */
 
 // normalise data 
 // then i know median & do quick sort maybe?
