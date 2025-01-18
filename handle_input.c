@@ -6,7 +6,7 @@
 /*   By: jwardeng <jwardeng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 15:24:43 by jwardeng          #+#    #+#             */
-/*   Updated: 2025/01/10 12:31:38 by jwardeng         ###   ########.fr       */
+/*   Updated: 2025/01/18 15:26:52 by jwardeng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,10 @@ int	insert_end(t_node **head, int data)
 	if (!new_node)
 		return (-1);
 	if ((*head) == NULL)
+	{
 		*head = new_node;
+		return(1);
+	}
 	else
 	{
 		temp = (*head);

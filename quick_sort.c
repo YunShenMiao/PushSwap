@@ -6,7 +6,7 @@
 /*   By: jwardeng <jwardeng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:33:51 by jwardeng          #+#    #+#             */
-/*   Updated: 2025/01/15 18:50:44 by jwardeng         ###   ########.fr       */
+/*   Updated: 2025/01/17 15:12:11 by jwardeng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int find_pivot(t_node **stack)
     piv = piv / count;
     else
     piv = piv / count;
-    /* ft_printf("pipi:%d\n", piv); */
+/*     ft_printf("pipi:%d\n", piv); */
     return(piv);
 }
 
@@ -79,41 +79,80 @@ void handle_distance(t_node **b, int calc)
             {
             while(1)
             {
-                ft_printf("taily:%d\n", (*b)->tail->data);
+/*                 ft_printf("taily:%d\n", (*b)->tail->data); */
                 rrb(b);
-                ft_printf("miao0\n");
+/*                 ft_printf("miao0\n"); */
                 sb(b);
                 count++;
-                ft_printf("miao1\n");
+/*                 ft_printf("miao1\n"); */
                 if (/* count == stack_len(*b) - calc */ ((*b)->data > (*b)->next->data) && ((*b)->data < (*b)->tail->data))
                 {
                 while(--count >= -1)
                 rb(b);
-                ft_printf("miao2\n");
+/*                 ft_printf("miao2\n"); */
                 }
-                ft_printf("miao3\n");
+/*                 ft_printf("miao3\n"); */
                 if (list_sorted(b) == -1)
                 break;
             }
 }
 }
 
+//   if ((*a)->data < (*a)->next->data && (*a)->data < (*a)->tail->data && (*a)->data > (*a)->tail->prev->data)
+//         {
+//         rra(a);
+//         sa(a);
+//         ra(a);
+//         ra(a);
+//         }
+//         else if (/* (*a)->data < (*a)->next->data && (*a)->data < (*a)->tail->data &&  */(*a)->data < piv)
+//         pb(a, b);
+//         else if ((*a)->data > (*a)->tail->data || (*a)->next->data > piv)
+//         ra(a);
+//         else
+//         sa(a);
+
+/* void aaaaa(t_node **a, int *count, int piv)
+{
+    while ((*a)->data > piv && list_sorted(a) != 1)
+    {
+    if ((*a)->data < (*a)->next->data && (*a)->data < (*a)->tail->data && (*a)->data > piv)
+    rra(a);
+    else if ((*a)->data > (*a)->tail->data && (*a)->next->data > (*a)->data && (*a)->data > piv)
+    ra(a);
+    else if ((*a)->data > piv)
+    sa(a);
+    count++;
+    }
+} */
+
 void party(t_node **a, t_node **b, int piv)
 {
     int size;
     int count;
-    int moves;
     int calc;
 
     size = stack_len(*a);
     count = 0;
-    moves = 0;
-    while (count < size && *a)
+    while (count < size && *a && list_sorted(a) != 1)
     {
-        if ((*a)->data < piv)
+/*          if ((*a)->data > piv && (*a)->data > (*a)->tail->data)
+        {
+        ra(a);
+        count++;
+        }
+        else if ((*a)->data > piv && (*a)->next->data < piv)
+        {
+        sa(a);
+        count++;
+        }
+        else if ((*a)->data < (*a)->tail->data && (*a)->next->data > piv)
+        { 
+        aaaaa(a, &count, piv);
+        } */
+        if ((*a)->data <= piv)
         {
         pb(a, b);
-        moves++;
         if(((*b) != NULL) && ((*b)->next != NULL))
         {
             if ((calc = calc_dist(b)) > 1 && !((*b)->data < (*b)->tail->data))
@@ -122,8 +161,8 @@ void party(t_node **a, t_node **b, int piv)
             sb(b);
             else if (((*b)->data < (*b)->tail->data) && ((*b)->next != NULL))
             rb(b);
-            print_list(*a);
-	print_list(*b);
+/*             print_list(*a);
+	        print_list(*b); */
         }
         }
         else
@@ -131,11 +170,6 @@ void party(t_node **a, t_node **b, int piv)
         rra(a);
         count++;
         }
-/*         if (moves == 0)
-         ft_printf("warnin\n");
-        ft_printf("count:%d\n", count);
-        ft_printf("size:%d\n", size);
-    } */
     }
 }
 
@@ -152,11 +186,11 @@ void try_sort(t_node **stacka, t_node **stackb, int size)
     piv = find_pivot(stacka);
     party(stacka, stackb, piv);
 
-    ft_printf("before:\n");
+/*     ft_printf("before:\n");
     print_list(*stacka);
-	print_list(*stackb);
+	print_list(*stackb); */
     
-    if (stack_len(*stacka) > 3)
+    if (stack_len(*stacka) > 3 && list_sorted(stacka) != 1)
     try_sort(stacka, stackb, stack_len(*stacka));
     if (stack_len(*stacka) == 3)
     sort_three(stacka);
@@ -176,9 +210,9 @@ void try_sort(t_node **stacka, t_node **stackb, int size)
     } */
     else
     pa(stackb, stacka);
-    ft_printf("after:\n");
+/*     ft_printf("after:\n");
     print_list(*stacka);
-	print_list(*stackb);
+	print_list(*stackb); */
     }
     if ((*stacka)->data > (*stacka)->next->data)
     sa(stacka);

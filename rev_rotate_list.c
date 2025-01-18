@@ -6,7 +6,7 @@
 /*   By: jwardeng <jwardeng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 16:20:11 by jwardeng          #+#    #+#             */
-/*   Updated: 2025/01/10 20:20:20 by jwardeng         ###   ########.fr       */
+/*   Updated: 2025/01/18 15:37:09 by jwardeng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,11 @@ void rev_rotate_list(t_node **node1)
     afterhead = (*node1);
     while (current->next != NULL)
         current = current->next;
-
     current->next = afterhead;
     ttail = current->prev;
     afterhead->prev = current;
     current->prev = NULL;
     ttail->next = NULL;
-    
     *node1 = current;
     t_node *temp = *node1;
     while (temp->next != NULL)

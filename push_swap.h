@@ -6,7 +6,7 @@
 /*   By: jwardeng <jwardeng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 16:23:10 by jwardeng          #+#    #+#             */
-/*   Updated: 2025/01/15 14:15:36 by jwardeng         ###   ########.fr       */
+/*   Updated: 2025/01/18 16:52:40 by jwardeng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,9 @@ typedef struct node
 // int 			insert_end(t_node **head, int data);
 // int				check_doubles(t_node **stacka);
 void	sort_three(t_node **stacka);
+void sort_five(t_node **stack, int order);
 int				handle_input(int argc, char *argv[], t_node **stacka);
-void            try_sort(t_node **a, t_node **b, int size);
+void            k_sort(t_node **a, t_node **b);
 int 			stack_len(t_node *stacka);
 int				list_sorted(t_node **stack);
 void	print_list(t_node *head);

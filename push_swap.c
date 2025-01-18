@@ -6,7 +6,7 @@
 /*   By: jwardeng <jwardeng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 16:28:35 by jwardeng          #+#    #+#             */
-/*   Updated: 2025/01/15 10:44:10 by jwardeng         ###   ########.fr       */
+/*   Updated: 2025/01/18 19:42:35 by jwardeng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,8 @@ int stack_len(t_node *stacka)
 	t_node	*temp;
 	int		count;
 
+	if(stacka == NULL)
+	return(0);
 	temp = stacka;
 	count = 0;
 	while (temp->next != NULL)
@@ -133,11 +135,13 @@ int	main(int argc, char *argv[])
 		sa(&stacka);
 	else if(stack_len(stacka) == 3)
 	sort_three(&stacka);
+/* 	else if (stack_len(stacka) == 5)
+	sort_five(&stacka, 1); */
  	else
 	{
 	if (simplify_data(&stacka, stack_len(stacka)) == -1)
 	return((ft_printf("Error\n")), (free_nodes(&stacka)), 1);
-	try_sort(&stacka, &stackb, stack_len(stacka));
+	k_sort(&stacka, &stackb);
 	}
 	print_list(stacka);
 	print_list(stackb);

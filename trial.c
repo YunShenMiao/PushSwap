@@ -6,7 +6,7 @@
 /*   By: jwardeng <jwardeng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 09:36:53 by jwardeng          #+#    #+#             */
-/*   Updated: 2025/01/15 09:01:18 by jwardeng         ###   ########.fr       */
+/*   Updated: 2025/01/18 19:37:17 by jwardeng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,3 +163,22 @@ SOME DEBUG PRINTS
                 ft_printf("2sorted?:%d\n", list_sorted(b));
                 ft_printf("2calc:%d\n", calc);
                 ft_printf("2count:%d\n", count); */
+
+                /* int	ft_sqrt(t_node **a)
+{
+	int	i;
+    int number;
+    
+    number = stack_len(*a);
+	if (number < 4)
+		return (1);
+	i = 2;
+	while (i * i < number)
+		i++;
+	if (i * i > number)
+	{
+		if ((i * i - number) < ((i - 1) * (i - 1) + (-number)))
+			return (i);
+	}
+	return (i - 1);
+} */
