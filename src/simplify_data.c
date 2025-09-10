@@ -6,11 +6,11 @@
 /*   By: jwardeng <jwardeng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 20:38:51 by jwardeng          #+#    #+#             */
-/*   Updated: 2024/12/31 20:07:04 by jwardeng         ###   ########.fr       */
+/*   Updated: 2025/01/18 19:59:44 by jwardeng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 void	sort_array(int **datarr, int stacklen)
 {
@@ -71,7 +71,7 @@ int	simplify_data(t_node **stacka, int stacklen)
 			if (temp->data == datarr[i])
 			{
 				(temp)->data = i;
-				break;
+				break ;
 			}
 			i++;
 		}

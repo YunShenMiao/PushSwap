@@ -4,9 +4,9 @@ CFLAGS = -Wall -Wextra -Werror
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
-SOURCES = 	handle_input.c simplify_data.c push_swap.c \
-			rev_rotate_list.c rotate_list.c swap_nodes.c push_nodes.c \
-			k_sort.c
+SOURCES = 	src/handle_input.c src/simplify_data.c src/push_swap.c \
+			src/rev_rotate_list.c src/rotate_list.c src/swap_nodes.c src/push_nodes.c \
+			src/k_sort.c src/helper.c
 
 OBJECTS =	$(SOURCES:.c=.o)
 
